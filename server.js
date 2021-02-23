@@ -2,7 +2,7 @@ const { json } = require('express');
 const express = require('express');
 const path = require('path');
 const { stringify } = require('querystring');
-const paths = '../db/db.json';
+const paths = './db/db.json';
 
 const datas = require(paths);
 fs = require('fs');
@@ -32,7 +32,7 @@ app.get('/api/notes',(req,res) =>{
 app.post('/api/notes', (req,res) =>{
      datatree.push(req.body);
 
-    fs.readFile('./assets/js/index.js','utf8',(err,data)=>{
+    fs.readFile(paths,'utf8',(err,data)=>{
         if(err){
         throw err;
         }   
@@ -49,15 +49,15 @@ app.post('/api/notes', (req,res) =>{
 
 
 
-app.use("/assets",express.static(__dirname + '/assets'))
+app.use(express.static(__dirname + '/public'))
 
 
 
 
-app.get('/notes', (req,res)=> res.sendFile(path.join(__dirname,'notes.html')));
+app.get('/notes', (req,res)=> res.sendFile(path.join(__dirname,'public/notes.html')));
 
 
 
-app.get('*',(req,res)=> res.sendFile(path.join(__dirname,'index.html')));
+app.get('*',(req,res)=> res.sendFile(path.join(__dirname,'public/index.html')));
 
 app.listen(PORT,()=> console.log(`App listening on PORT ${PORT}`));

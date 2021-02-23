@@ -47,6 +47,8 @@ app.post('/api/notes', (req,res) =>{
     res.redirect('back')
 })
 
+
+
 app.use("/assets",express.static(__dirname + '/assets'))
 
 

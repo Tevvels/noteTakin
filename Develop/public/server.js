@@ -24,7 +24,7 @@ app.get('/api/notes',(req,res) =>{
         })
     })
 
-    //cd develop/public
+
 
     const datatree =[];
 
